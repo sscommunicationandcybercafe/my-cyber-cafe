@@ -1,1 +1,184 @@
-1
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SS Communication & Cyber Cafe</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f0f2f5; color: #333; }
+        .container { max-width: 650px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: #0056b3; margin-bottom: 5px; font-size: 28px; font-weight: 700; }
+        .motto { text-align: center; font-style: italic; color: #666; margin-bottom: 25px; font-size: 15px; }
+        .info-table { width: 100%; margin-bottom: 25px; border-collapse: collapse; background: #f8f9fa; border-radius: 8px; overflow: hidden; }
+        .info-table td { padding: 12px; border-bottom: 1px solid #eee; font-size: 15px; }
+        .hidden { display: none !important; }
+        .secure-panel { background: #fffdf4; padding: 20px; border: 1px solid #ffe082; border-radius: 8px; margin-top: 30px; }
+        .hyteck-active { border: 2px solid #dc3545; background: #f8d7da !important; }
+        input, select, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; font-size: 16px; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.2s; }
+        button:hover { background-color: #0056b3; }
+        .price-box { background: #e3f2fd; padding: 15px; border-radius: 6px; border: 1px solid #90caf9; margin-top: 15px; }
+        .error-msg { color: #dc3545; font-weight: bold; text-align: center; margin: 10px 0; font-size: 15px; }
+        .payment-methods { display: flex; justify-content: space-around; margin: 15px 0; background: #fff; padding: 10px; border-radius: 6px; border: 1px solid #ddd; }
+        .payment-badge { font-size: 14px; font-weight: bold; color: #495057; padding: 5px 10px; border-radius: 4px; background: #e9ecef; }
+        .status-box { background: #e8f5e9; border: 1px solid #a5d6a7; padding: 15px; border-radius: 6px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SS COMMUNICATION & CYBER CAFE</h1>
+    <p class="motto">"aapka bhrosha humari prority"</p>
+    
+    <table class="info-table">
+        <tr><td><strong>📍 पता:</strong> C19, Vikas Nagar, Near Hardik Hospital, Delhi-110059</td></tr>
+        <tr><td><strong>📞 हेल्पलाइन:</strong> 8178270501 (Som-Ravi: 9:00 AM - 9:00 PM)</td></tr>
+        <tr><td><strong>📧 ईमेल:</strong> sscommunicationandcyber@gmail.com</td></tr>
+        <tr><td><strong>🗓 स्थापना वर्ष:</strong> 11 July 2026</td></tr>
+    </table>
+
+    <!-- कस्टमर बुकिंग और ट्रैकर सेक्शन -->
+    <div id="customer-section">
+        <h2>📋 ऑनलाइन सर्विस बुकिंग व रियल-टाइम स्टेटस</h2>
+        <label for="service-select">कृपया अपनी आवश्यक सर्विस चुनें:</label>
+        <select id="service-select" onchange="updatePrice()">
+            <option value="default">-- सर्विस चुनें --</option>
+            <option value="pvc">PVC स्मार्ट कार्ड प्रिंट</option>
+            <option value="edistrict">e-District प्रमाण पत्र (Income, Domicile, Caste)</option>
+            <option value="cyber">सरकारी फॉर्म / CSC कार्य / GST / ITR फाइलिंग</option>
+            <option value="photo">पासपोर्ट साइज फोटो / लैमिनेशन / फोटोकॉपी</option>
+        </select>
+        
+        <div id="price-breakdown" class="price-box hidden">
+            <p><strong>टोकन चार्ज (एडवांस फीस):</strong> <span id="token-fee">₹0</span></p>
+            <p><strong>काम पूरा होने पर बाकी देय राशि:</strong> <span id="balance-fee">₹0</span></p>
+            
+            <p><strong>💳 उपलब्ध पेमेंट ऑप्शंस:</strong></p>
+            <div class="payment-methods">
+                <span class="payment-badge">PhonePe / UPI</span>
+                <span class="payment-badge">Debit Card (डेबिट कार्ड)</span>
+                <span class="payment-badge">Cash</span>
+            </div>
+
+            <!-- रियल टाइम स्टेटस ट्रैकर -->
+            <div class="status-box">
+                <p><strong>🔄 आपके कार्य का लाइव स्टेटस:</strong> <span id="work-status" style="color: #2e7d32; font-weight: bold;">In Progress (कार्य जारी है...)</span></p>
+                <p style="font-size: 13px; color: #666; margin: 0;">⚠️ सुरक्षा नियम: फाइनल स्लिप या डॉक्यूमेंट का एक्सेस पेमेंट पूरा होने के बाद ही काउंटर पर दिया जाएगा।</p>
+            </div>
+            
+            <button onclick="alert('टोकन बुक करने के लिए हमारे PhonePe ID: 8178270501-5@ybl पर ₹20 एडवांस भेजें या हेल्पलाइन पर संपर्क करें।')">बुक स्लॉट और टोकन जनरेट करें</button>
+        </div>
+    </div>
+
+    <!-- सुरक्षित स्टाफ लॉगिन गेट -->
+    <div id="secure-panel-container" class="secure-panel">
+        <h3>🔐 स्टाफ लॉगिन गेट <span id="hyteck-badge" style="color: #dc3545; font-size: 14px;" class="hidden">[🛡 Hyteck Mode Active]</span></h3>
+        
+        <div id="login-gate">
+            <label for="staff-pin">सिक्योरिटी पिन दर्ज करें:</label>
+            <input type="password" id="staff-pin" placeholder="मास्टर स्टाफ सिक्योरिटी पिन दर्ज करें">
+            <div id="lockout-message" class="error-msg hidden">🚨 सुरक्षा कारणों से टर्मिनल 15 मिनट के लिए ऑटो-लॉक हो गया है!</div>
+            <button id="unlock-btn" onclick="checkStaffAuth()">Unlock Terminal</button>
+        </div>
+        
+        <!-- ऑथेंटिकेशन के बाद ही खुलेगा (Admin Console) -->
+        <div id="admin-panel" class="hidden">
+            <p style="color: green; font-weight: bold; text-align: center;">✔ टर्मिनल अनलॉक - संदीप चौधरी (Owner)</p>
+            <p style="text-align: center; font-size: 14px; color: #28a745; margin-bottom: 15px;">🛡 Hyteck Cyber-Shield Active & Monitoring Terminal</p>
+            
+            <label for="status-control">यहाँ से ग्राहकों का वर्क स्टेटस बदलें:</label>
+            <select id="status-control" onchange="changeStatusByAdmin()">
+                <option value="In Progress (कार्य जारी है...)">In Progress</option>
+                <option value="Verification Pending (जांच जारी)">Verification Pending</option>
+                <option value="Completed! (भुगतान के बाद स्लिप प्राप्त करें)">Completed</option>
+            </select>
+            
+            <button onclick="alert('Backup Exported (JSON) successfully!')" style="background-color: #6c757d; margin-top: 10px;">Export Backup (JSON)</button>
+            <button onclick="lockTerminal()" style="background-color: #dc3545; margin-top: 10px;">टर्मिनल稳 लॉक करें</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let failedAttempts = 0;
+    let isLockedOut = false;
+
+    // डायनामिक प्राइजिंग लॉजिक
+    function updatePrice() {
+        const select = document.getElementById('service-select');
+        const breakdown = document.getElementById('price-breakdown');
+        const tokenFee = document.getElementById('token-fee');
+        const balanceFee = document.getElementById('balance-fee');
+        
+        if(!select || !breakdown || !tokenFee || !balanceFee) return;
+
+        if(select.value === 'pvc') {
+            tokenFee.innerText = '₹20';
+            balanceFee.innerText = '₹30';
+            breakdown.classList.remove('hidden');
+        } else if(select.value === 'edistrict') {
+            tokenFee.innerText = '₹20';
+            balanceFee.innerText = '₹180';
+            breakdown.classList.remove('hidden');
+        } else if(select.value === 'cyber') {
+            tokenFee.innerText = '₹20';
+            balanceFee.innerText = '₹280';
+            breakdown.classList.remove('hidden');
+        } else if(select.value === 'photo') {
+            tokenFee.innerText = '₹20';
+            balanceFee.innerText = '₹0';
+            breakdown.classList.remove('hidden');
+        } else {
+            breakdown.classList.add('hidden');
+        }
+    }
+
+    // एडमिन पिन वेरिफिकेशन और सुरक्षा फ़िल्टर (Hyteck Mode)
+    function checkStaffAuth() {
+        if (isLockedOut) return;
+
+        const pinInput = document.getElementById('staff-pin');
+        const panelContainer = document.getElementById('secure-panel-container');
+        const lockoutMsg = document.getElementById('lockout-message');
+        const unlockBtn = document.getElementById('unlock-btn');
+        const hyteckBadge = document.getElementById('hyteck-badge');
+        const adminPanel = document.getElementById('admin-panel');
+        const loginGate = document.getElementById('login-gate');
+
+        if(!pinInput || !panelContainer || !lockoutMsg || !unlockBtn || !hyteckBadge || !adminPanel || !loginGate) return;
+
+        if(pinInput.value === "8178") { 
+            failedAttempts = 0;
+            loginGate.classList.add('hidden');
+            adminPanel.classList.remove('hidden');
+        } else {
+            failedAttempts++;
+            if(failedAttempts >= 3) {
+                isLockedOut = true;
+                panelContainer.classList.add('hyteck-active');
+                lockoutMsg.classList.remove('hidden');
+                hyteckBadge.classList.remove('hidden');
+                unlockBtn.disabled = true;
+                pinInput.disabled = true;
+                
+                alert("🚨 सुरक्षा अलर्ट: 3 बार गलत पिन! Hyteck Mode ने सुरक्षा के लिए टर्मिनल लॉक कर दिया है।");
+                
+                setTimeout(() => {
+                    isLockedOut = false;
+                    failedAttempts = 0;
+                    panelContainer.classList.remove('hyteck-active');
+                    lockoutMsg.classList.add('hidden');
+                    hyteckBadge.classList.add('hidden');
+                    unlockBtn.disabled = false;
+                    pinInput.disabled = false;
+                    pinInput.value = "";
+                }, 900000); 
+            } else {
+                alert("❌ गलत मास्टर पिन! आपके पास " + (3 - failedAttempts) + " प्रयास शेष हैं।");
+            }
+        }
+    }
+
+    function changeStatusByAdmin() {
+
+
